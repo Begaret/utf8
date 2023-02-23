@@ -1,4 +1,5 @@
 #pragma once
+
 #include "codepoint.h"
 
 namespace utf8
