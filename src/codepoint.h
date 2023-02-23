@@ -2,15 +2,6 @@
 
 /*
  *  A class acting as a wrapper over UTF-8 encoded characters
- *
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  */
 
 #include <string>
