@@ -64,6 +64,6 @@ namespace utf8
     string to_string(long long val) noexcept;
     string to_string(unsigned long long val) noexcept;
 
-    string to_string(float val) noexcept;   // TODO:
-    string to_string(double val) noexcept;  // TODO:
+    string to_string(float val) noexcept;
+    string to_string(double val) noexcept;
 }
