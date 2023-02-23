@@ -4,3 +4,4 @@ include/
 build/
 main.cpp
 .DS_Store
+.vscode
