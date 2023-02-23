@@ -1,5 +1,6 @@
 Makefile
 utf8-test
 include/
+build/
 main.cpp
 .DS_Store
