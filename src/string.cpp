@@ -393,4 +393,9 @@ namespace utf8 {
 
         return s;
     }
+    
+    string to_string(bool val) noexcept
+    {
+        return val ? "true" : "false";
+    }
 }

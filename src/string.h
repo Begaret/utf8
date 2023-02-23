@@ -66,4 +66,6 @@ namespace utf8
 
     string to_string(float val) noexcept;
     string to_string(double val) noexcept;
+
+    string to_string(bool val) noexcept;
 }
