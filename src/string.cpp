@@ -234,4 +234,113 @@ namespace utf8 {
         
         return ustr2;
     }
+
+    string to_string(unsigned int val) noexcept
+    {
+        string ustr;
+
+        unsigned int temp = val;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            ustr.push(digit + '0');
+        }
+
+        string ustr2;
+        for (int i = ustr.length(); i >= 0; i--) {
+            ustr2.push(ustr[i]);
+        }
+        
+        return ustr2;
+    }
+
+    string to_string(long val) noexcept
+    {
+        string ustr;
+
+        long temp = abs(val);
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            ustr.push(digit + '0');
+        }
+
+        string ustr2;
+        if (val < 0) ustr2.push('-');
+        for (int i = ustr.length(); i >= 0; i--) {
+            ustr2.push(ustr[i]);
+        }
+        
+        return ustr2;
+    }
+
+    string to_string(unsigned long val) noexcept
+    {
+        string ustr;
+
+        unsigned long temp = val;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            ustr.push(digit + '0');
+        }
+
+        string ustr2;
+        if (val < 0) ustr2.push('-');
+        for (int i = ustr.length(); i >= 0; i--) {
+            ustr2.push(ustr[i]);
+        }
+        
+        return ustr2;
+    }
+
+    string to_string(long long val) noexcept
+    {
+        string ustr;
+
+        long long temp = abs(val);
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            ustr.push(digit + '0');
+        }
+
+        string ustr2;
+        if (val < 0) ustr2.push('-');
+        for (int i = ustr.length(); i >= 0; i--) {
+            ustr2.push(ustr[i]);
+        }
+        
+        return ustr2;
+    }
+
+    string to_string(unsigned long long val) noexcept
+    {
+        string ustr;
+
+        unsigned long long temp = val;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            ustr.push(digit + '0');
+        }
+
+        string ustr2;
+        if (val < 0) ustr2.push('-');
+        for (int i = ustr.length(); i >= 0; i--) {
+            ustr2.push(ustr[i]);
+        }
+        
+        return ustr2;
+    }
 }

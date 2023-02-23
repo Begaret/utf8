@@ -56,5 +56,14 @@ namespace utf8
         size_t m_length;
     };
 
+    /* Conversions */
     string to_string(int val) noexcept;
+    string to_string(unsigned int val) noexcept;
+    string to_string(long val) noexcept;
+    string to_string(unsigned long val) noexcept;
+    string to_string(long long val) noexcept;
+    string to_string(unsigned long long val) noexcept;
+
+    string to_string(float val) noexcept;   // TODO:
+    string to_string(double val) noexcept;  // TODO:
 }
