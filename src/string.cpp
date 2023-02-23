@@ -1,4 +1,6 @@
 #include "string.h"
+
+#include <cmath>
     
 namespace utf8 {
     string::string() noexcept : m_length(0) 
@@ -342,5 +344,53 @@ namespace utf8 {
         }
         
         return ustr2;
+    }
+
+    string to_string(float val) noexcept
+    {
+        if (std::isinf(val))
+            return "inf";
+            
+        if (!std::isfinite(val))
+            return "NaN";
+
+        int i = int(val);
+        float mantissa = val - i;
+
+        string s = to_string(i);
+        s.push('.');
+
+        int digit = val;
+        while (digit != 0) {
+            mantissa *= 10.0f;
+            digit = int(mantissa) % 10;
+            s.push(digit + '0');
+        }
+
+        return s;
+    }
+
+    string to_string(double val) noexcept
+    {
+        if (std::isinf(val))
+            return "inf";
+
+        if (!std::isfinite(val))
+            return "NaN";
+
+        int i = int(val);
+        double mantissa = val - i;
+
+        string s = to_string(i);
+        s.push('.');
+
+        int digit = val;
+        while (digit != 0) {
+            mantissa *= 10.0f;
+            digit = int(mantissa) % 10;
+            s.push(digit + '0');
+        }
+
+        return s;
     }
 }
