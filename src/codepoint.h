@@ -40,8 +40,15 @@ namespace utf8 {
             return std::string(m_bytes.begin(), m_bytes.end()); 
         }
 
-        /* miscellaneous */
-        inline operator bool() const noexcept { return m_length != 0; }
+        /* comparison */
+        bool operator==(const codepoint& other) const noexcept;
+        inline bool operator==(char c) const noexcept { return m_bytes[0] == (unsigned char)c; }
+
+        inline bool operator!=(const codepoint& other) const noexcept { return !operator==(other); }
+        inline bool operator!=(char c) const noexcept { return !operator==(c); }
+
+        // /* miscellaneous */
+        // inline operator bool() const noexcept { return m_length != 0; }
 
         private:
         std::vector<unsigned char> m_bytes;

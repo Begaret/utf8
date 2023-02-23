@@ -70,7 +70,7 @@ namespace utf8 {
 
         else {
             int i = 0;
-            while (cpts[i]) i++;
+            while (cpts[i] != '\0') i++;
             m_length = i;
             m_buffer = new codepoint[i + 1];
 
@@ -138,7 +138,7 @@ namespace utf8 {
             std::swap(m_buffer, buffer);
             m_length = new_length;
 
-            delete[] buffer;
+            delete [] buffer;
         }
 
         return *this;
@@ -156,12 +156,82 @@ namespace utf8 {
         return string(buffer);
     }
 
+    void string::append(const string &other) noexcept
+    {
+        size_t new_length = m_length + other.m_length;
+        codepoint* buffer = new codepoint[new_length + 1];
+
+        std::copy(m_buffer, m_buffer + m_length, buffer);
+        std::copy(other.m_buffer, other.m_buffer + other.m_length, buffer + m_length);
+        buffer[new_length] = '\0';
+
+        std::swap(m_buffer, buffer);
+        m_length = new_length;
+
+        delete [] buffer;
+    }
+
+    void string::push(const codepoint &cpt) noexcept
+    {
+        size_t new_length = m_length + 1;
+        codepoint* buffer = new codepoint[new_length + 1];
+
+        std::copy(m_buffer, m_buffer + m_length, buffer);
+        buffer[m_length] = cpt;
+        buffer[new_length] = '\0';
+
+        std::swap(m_buffer, buffer);
+        m_length = new_length;
+
+        delete [] buffer;
+    }
+
+    codepoint string::pop() noexcept
+    {
+        // get last element of buffer
+        auto cpt = m_buffer[m_length - 1];
+
+        size_t new_length = m_length - 1;
+        codepoint* buffer = new codepoint[new_length + 1];
+
+        std::copy(m_buffer, m_buffer + (new_length - 1), buffer);
+        buffer[new_length] = '\0';
+
+        std::swap(m_buffer, buffer);
+        m_length = new_length;
+
+        delete [] buffer;
+        return cpt;
+    }
+
     std::ostream &operator<<(std::ostream &os, const string &str)
     {
         int i = 0;
-        while (str.m_buffer[i])
+        while (i < str.m_length)
             os << str.m_buffer[i++];
 
         return os;
+    }
+
+    string to_string(int val) noexcept
+    {
+        string ustr;
+
+        int temp = abs(val);
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            ustr.push(digit + '0');
+        }
+
+        string ustr2;
+        if (val < 0) ustr2.push('-');
+        for (int i = ustr.length(); i >= 0; i--) {
+            ustr2.push(ustr[i]);
+        }
+        
+        return ustr2;
     }
 }

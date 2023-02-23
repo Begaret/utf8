@@ -45,11 +45,23 @@ namespace utf8 {
 
     codepoint::~codepoint() noexcept {}
 
+    bool codepoint::operator==(const codepoint &other) const noexcept
+    {
+        if (other.m_length != m_length)
+            return false;
+        
+        for (int i = 0; i < m_length; i++)
+            if (other.m_bytes[i] != m_bytes[i])
+                return false;
+            
+        return true;
+    }
+
     std::ostream &operator<<(std::ostream &os, const codepoint &cpt)
     {
         if (cpt.m_bytes.empty())
             throw empty_utf8_exception();
-
+        
         std::string str(cpt.m_bytes.begin(), cpt.m_bytes.end());
         str.push_back('\0');
 

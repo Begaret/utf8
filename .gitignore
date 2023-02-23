@@ -5,3 +5,4 @@ build/
 main.cpp
 .DS_Store
 .vscode
+*.sh

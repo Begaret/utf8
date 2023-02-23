@@ -43,6 +43,10 @@ namespace utf8
         string& operator+=(const string& other);
         string operator+(const string& other) const;
 
+        void append(const string& other) noexcept;
+        void push(const codepoint& cpt) noexcept;
+        codepoint pop() noexcept;
+
         /* Members */
         inline codepoint* buffer() const noexcept { return m_buffer; }
         inline size_t length() const noexcept { return m_length; }
@@ -51,4 +55,6 @@ namespace utf8
         codepoint* m_buffer;
         size_t m_length;
     };
+
+    string to_string(int val) noexcept;
 }
