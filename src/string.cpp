@@ -224,7 +224,7 @@ namespace bgt
             bool neg = m_buffer[0] == '-';
             for (int i = m_length - 1; i > (neg ? 1 : 0); i--) {
                 if (m_buffer[i] == '.') break;
-                if (!isnumber(m_buffer[i].bytes()[0])) throw;
+                else if (!isnumber(m_buffer[i].bytes()[0])) throw;
                 ret = ret + ((int(m_buffer[i].bytes()[0]) - '0') * (pow(10, (m_length - i) - 1)));
             }
 
