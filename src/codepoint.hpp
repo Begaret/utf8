@@ -7,8 +7,8 @@
 #include <string>
 #include <vector>
 
-#include "exception.h"
-#include "validate.h"
+#include "exception.hpp"
+#include "validate.hpp"
 
 namespace bgt 
 {
